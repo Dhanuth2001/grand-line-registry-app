@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const app = express();
 const HTTP_PORT = process.env.PORT || 3000;
@@ -88,7 +89,7 @@ const crewMembers = [
   },
 ];
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 app.use(express.urlencoded({ extended: true }));
 
