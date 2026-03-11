@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crew | Grand Line Registry</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-base-100 min-h-screen">
+
+    <%- include('partials/navbar', { title: 'The Crew' }) %>
+
+    <main class="container mx-auto px-4 py-8">
+        
+        <div class="grid grid-cols-1 mb-10 text-center">
+            <h1 class="text-5xl font-black text-secondary mb-2">The Straw Hat Pirates</h1>
+            <p class="text-xl opacity-70">"I'm going to be the King of the Pirates!" — Monkey D. Luffy</p>
+            <div class="divider w-24 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <% for (const member of crew) { %>
+                <div class="card bg-base-200 shadow-xl border border-base-300 hover:shadow-2xl transition-shadow">
+                    <div class="card-body">
+                        <h2 class="card-title text-2xl font-bold">
+                            <%= member.name %>
+                        </h2>
+                        
+                        <p class="text-sm">
+                            <span class="font-semibold">Role:</span> <%= member.role %> <br>
+                            <span class="font-semibold">Devil Fruit:</span> <%= member.devilFruit %>
+                        </p>
+
+                        <p class="text-lg font-mono text-primary font-bold">
+                            <%= member.bounty.toLocaleString() %> Berries
+                        </p>
+
+                        <div class="card-actions justify-between items-center mt-4">
+                            <div>
+                                <% if (member.status === 'active') { %>
+                                    <div class="badge badge-success gap-2 py-3 px-4 text-white">
+                                        Active
+                                    </div>
+                                <% } else if (member.status === 'pending') { %>
+                                    <div class="badge badge-warning gap-2 py-3 px-4">
+                                        Pending Approval
+                                    </div>
+                                <% } else { %>
+                                    <div class="badge badge-error gap-2 py-3 px-4 text-white">
+                                        Bounty Frozen
+                                    </div>
+                                <% } %>
+                            </div>
+
+                            <a href="/crew" class="btn btn-outline btn-sm">View All Crew</a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </main>
+
+    <footer class="footer footer-center p-10 bg-base-200 text-base-content mt-12">
+        <aside>
+            <p>Copyright © 2026 - Grand Line Registry - All Rights Reserved</p>
+        </aside>
+    </footer>
+
+</body>
+</html>

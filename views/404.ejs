@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-base-100 flex flex-col min-h-screen">
+    <%- include('partials/navbar', { title: 'Lost at Sea' }) %>
+
+    <main class="flex-grow flex flex-col items-center justify-center text-center p-6">
+        <h1 class="text-9xl font-bold text-error">404</h1>
+        <p class="text-2xl mt-4 mb-8 max-w-md"><%= message %></p>
+        <a href="/" class="btn btn-primary">Return to the Sunny</a>
+    </main>
+</body>
+</html>

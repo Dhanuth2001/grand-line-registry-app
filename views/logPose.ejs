@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-base-100">
+    <%- include('partials/navbar', { title: 'Secret Log Pose' }) %>
+
+    <main class="container mx-auto p-6">
+        <div class="alert alert-info shadow-sm mb-8">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span><%= log %></span>
+        </div>
+
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-black text-primary">Destination Reached: Laugh Tale</h1>
+            <p class="text-lg mt-2">The end of the journey is near. Only the true crew remains.</p>
+        </div>
+
+        <h3 class="text-xl font-bold mb-4">Active Legends:</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <% for (const member of crew) { %>
+                <% if (member.status === 'active') { %>
+                    <div class="p-4 bg-base-300 rounded-lg flex justify-between items-center">
+                        <span class="font-bold"><%= member.name %></span>
+                        <span class="text-sm opacity-70"><%= member.role %></span>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    </main>
+</body>
+</html>

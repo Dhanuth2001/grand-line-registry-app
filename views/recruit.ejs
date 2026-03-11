@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Crew</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-base-100">
+    <%- include('partials/navbar', { title: 'Join the Crew' }) %>
+
+    <main class="max-w-2xl mx-auto p-6 bg-base-200 rounded-xl shadow-md my-10">
+        <h2 class="text-2xl font-bold mb-4">Recruitment Form</h2>
+
+        <% if (errors && errors.length > 0) { %>
+            <div class="alert alert-error mb-4">
+                <ul>
+                    <% errors.forEach(err => { %> <li><%= err %></li> <% }) %>
+                </ul>
+            </div>
+        <% } %>
+
+        <% if (typeof success !== 'undefined' && success) { %>
+            <div class="alert alert-success mb-4">Application submitted! Luffy is considering your request.</div>
+        <% } %>
+
+        <form action="/recruit" method="POST" class="space-y-4">
+            <input type="text" name="applicantName" placeholder="Your Name" class="input input-bordered w-full" />
+            <input type="text" name="skill" placeholder="Special Skill" class="input input-bordered w-full" />
+            
+            <select name="role" class="select select-bordered w-full">
+                <option disabled selected>Select a role</option>
+                <option>Navigator</option><option>Cook</option><option>Sniper</option>
+                <option>Doctor</option><option>Musician</option><option>Other</option>
+            </select>
+
+            <textarea name="message" class="textarea textarea-bordered w-full" placeholder="Why should Luffy let you join?"></textarea>
+
+            <div class="form-control">
+                <span class="label-text font-bold mb-2">Preferred Sea</span>
+                <div class="flex gap-4">
+                    <label class="label cursor-pointer gap-2">
+                        <input type="radio" name="sea" value="East Blue" class="radio" /> East Blue
+                    </label>
+                    <label class="label cursor-pointer gap-2">
+                        <input type="radio" name="sea" value="West Blue" class="radio" /> West Blue
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-control">
+                <label class="label cursor-pointer justify-start gap-4">
+                    <input type="checkbox" name="agreeTerms" class="checkbox" />
+                    <span class="label-text">I understand the risks of the Grand Line</span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full">Submit Application</button>
+        </form>
+    </main>
+</body>
+</html>
